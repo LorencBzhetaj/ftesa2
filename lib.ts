@@ -8,15 +8,19 @@ const DAYS = ["E diel", "E hënë", "E martë", "E mërkurë", "E enjte", "E pre
 /** Real values from config win; demo values are used only as clearly labelled preview data. */
 export function getWedding() {
   const c = raw;
+  // "bride-first" shows Meli & Adi; default shows groom first
+  const brideFirst = (c as { nameOrder?: string }).nameOrder === "bride-first";
+  const first = brideFirst ? c.bride : c.groom;
+  const second = brideFirst ? c.groom : c.bride;
   const dateIsDemo = !c.date;
   const timelineIsDemo = c.timeline.length === 0;
   const iso = (c.date ?? c.demo.date) as string;
   const [y, m, d] = iso.split("-").map(Number);
   const wd = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
   return {
-    names: c.displayNames ?? `${c.groom} & ${c.bride}`,
-    first: c.groom,
-    second: c.bride,
+    names: c.displayNames ?? `${first} & ${second}`,
+    first,
+    second,
     time: c.time,
     iso,
     year: y,

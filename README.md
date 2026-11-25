@@ -1,4 +1,4 @@
-# Ftesë fejese — Adi & Meli
+# Ftesë fejese — Meli & Adi
 
 Ftesë digjitale (mobile-first) e ndërtuar sipas udhëzimeve të `Royal-Wedding-Codex-Handoff.zip` (shiko `docs/`).
 
@@ -12,7 +12,7 @@ npm run typecheck
 
 ## Të dhënat
 Të gjitha të dhënat janë te `config/wedding.json`.
-- Emrat: Adi & Meli · Data: 27 Dhjetor 2026 · Ora: 13:00 · Lokali: Bar Restorant Vëllezërit Dushkaj (link Google Maps)
+- Emrat: Meli & Adi (`nameOrder: "bride-first"` në `config/wedding.json`) · Data: 27 Dhjetor 2026 · Ora: 13:00 · Lokali: Bar Restorant Vëllezërit Dushkaj (link Google Maps)
 - `timeline`, tekstet: ende **null** → faqja tregon vlera shembull me etiketën "shembull · për t'u konfirmuar".
 - Butoni "Shiko në Hartë" shfaqet vetëm kur plotësohet `venue.mapsUrl`.
 - Kur gjithçka konfirmohet, vendos `"confirmed": true` (heq shiritin "Parapamje lokale").

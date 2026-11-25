@@ -12,6 +12,7 @@ const cfg = JSON.parse(read("config/wedding.json"));
 
 const MONTHS = ["Janar", "Shkurt", "Mars", "Prill", "Maj", "Qershor", "Korrik", "Gusht", "Shtator", "Tetor", "Nëntor", "Dhjetor"];
 const [y, m, d] = cfg.date.split("-").map(Number);
+const [n1, n2] = cfg.nameOrder === "bride-first" ? [cfg.bride, cfg.groom] : [cfg.groom, cfg.bride];
 const dateLine = `${d} ${MONTHS[m - 1]} ${y}  ·  Ora ${cfg.time}`;
 
 const envelope = `data:image/jpeg;base64,${read("public/img/envelope.jpg").toString("base64")}`;
@@ -53,7 +54,7 @@ const tree = h("div", { width: W, height: H, display: "flex", position: "relativ
       h("div", { width: 10, height: 10, background: "#b58a49", transform: "rotate(45deg)", margin: "0 12px" }, []),
       h("div", { width: 90, height: 1.5, background: "#b58a49" }, []),
     ]),
-    h("div", { fontFamily: "Pinyon", fontSize: 66, color: "#6b4a2c", lineHeight: 1.25, display: "flex" }, `${cfg.groom} & ${cfg.bride}`),
+    h("div", { fontFamily: "Pinyon", fontSize: 66, color: "#6b4a2c", lineHeight: 1.25, display: "flex" }, `${n1} & ${n2}`),
     h("div", { fontFamily: "Cormorant", fontWeight: 500, fontSize: 30, color: "#79654f", marginTop: 8, display: "flex" }, dateLine),
   ]),
 ]);
@@ -66,6 +67,6 @@ writeFileSync(tmp, png);
 execFileSync("ffmpeg", ["-loglevel", "error", "-y", "-i", tmp, "-q:v", "3", fileURLToPath(out)]);
 rmSync(tmp);
 copyFileSync(out, new URL("app/twitter-image.jpg", root));
-writeFileSync(new URL("app/opengraph-image.alt.txt", root), `Ftesë për fejesën tonë — ${cfg.groom} & ${cfg.bride}, ${dateLine}`);
-writeFileSync(new URL("app/twitter-image.alt.txt", root), `Ftesë për fejesën tonë — ${cfg.groom} & ${cfg.bride}, ${dateLine}`);
+writeFileSync(new URL("app/opengraph-image.alt.txt", root), `Ftesë për fejesën tonë — ${n1} & ${n2}, ${dateLine}`);
+writeFileSync(new URL("app/twitter-image.alt.txt", root), `Ftesë për fejesën tonë — ${n1} & ${n2}, ${dateLine}`);
 console.log("OG image written:", readFileSync(out).length, "bytes");
