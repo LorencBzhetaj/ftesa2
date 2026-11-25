@@ -469,3 +469,10 @@ button { font: inherit; color: inherit; }
 
 /* main couple photo: keep both faces inside the arch */
 .featured:not(.featured-more) .featured-inner img { object-position: 50% 12%; }
+
+/* closing line under the family signature */
+.rsvp-note {
+  margin: 6px auto 0; max-width: 340px; text-wrap: balance;
+  font-style: italic; font-weight: 500; font-size: clamp(19px, 5.4vw, 23px); line-height: 1.4;
+  color: var(--brown); letter-spacing: .01em;
+}

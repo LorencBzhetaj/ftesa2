@@ -191,11 +191,7 @@ export default function Invitation({ w }: { w: Wedding }) {
               </p>
             )}
             <Icon name="heart" className="reveal heart" />
-            <p className="sign reveal">
-              <span className="name-line">{w.first}</span>
-              <span className="amp name-line">&amp;</span>
-              <span className="name-line">{w.second}</span>
-            </p>
+            <p className="rsvp-note reveal">Ju lutem konfirmoni pjesëmarrjen tuaj</p>
           </section>
         </div>
 
