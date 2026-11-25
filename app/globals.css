@@ -476,3 +476,10 @@ button { font: inherit; color: inherit; }
   font-style: italic; font-weight: 500; font-size: clamp(19px, 5.4vw, 23px); line-height: 1.4;
   color: var(--brown); letter-spacing: .01em;
 }
+
+/* elegant gold heart with flourishes before the closing line */
+.closing-heart {
+  display: block; width: min(240px, 72%); height: auto; margin: 22px auto 10px;
+  filter: drop-shadow(0 1px .6px rgba(255, 250, 235, .9)) drop-shadow(0 2px 2px rgba(90, 58, 18, .3));
+}
+.block.closing { padding-bottom: 96px; }

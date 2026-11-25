@@ -25,6 +25,50 @@ function Lines({ text }: { text: string }) {
   );
 }
 
+/** Gold heart with calligraphic flourishes, used before the closing line. */
+function ClosingHeart() {
+  const id = useId().replace(/:/g, "");
+  return (
+    <svg className="closing-heart reveal" viewBox="0 0 240 56" aria-hidden="true">
+      <defs>
+        <linearGradient id={`${id}m`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#8c6428" />
+          <stop offset=".35" stopColor="#d9b46c" />
+          <stop offset=".55" stopColor="#f6e4b0" />
+          <stop offset=".8" stopColor="#c19445" />
+          <stop offset="1" stopColor="#8c6428" />
+        </linearGradient>
+        <radialGradient id={`${id}h`} cx=".38" cy=".3" r=".8">
+          <stop offset="0" stopColor="#fbecc4" />
+          <stop offset=".45" stopColor="#d2a65a" />
+          <stop offset="1" stopColor="#8a6128" />
+        </radialGradient>
+      </defs>
+      <g fill="none" stroke={`url(#${id}m)`} strokeLinecap="round">
+        {/* left flourish */}
+        <path d="M100 30 C88 30 82 22 72 22 C62 22 58 30 50 30 C40 30 34 24 22 26" strokeWidth="1.4" />
+        <path d="M72 22 C66 14 56 14 54 20 C52 25 58 27 60 24" strokeWidth="1.1" />
+        <path d="M50 30 C46 36 38 37 36 33" strokeWidth="1" />
+        {/* right flourish (mirror) */}
+        <path d="M140 30 C152 30 158 22 168 22 C178 22 182 30 190 30 C200 30 206 24 218 26" strokeWidth="1.4" />
+        <path d="M168 22 C174 14 184 14 186 20 C188 25 182 27 180 24" strokeWidth="1.1" />
+        <path d="M190 30 C194 36 202 37 204 33" strokeWidth="1" />
+      </g>
+      <circle cx="16" cy="26.5" r="2.2" fill={`url(#${id}h)`} />
+      <circle cx="224" cy="26.5" r="2.2" fill={`url(#${id}h)`} />
+      {/* heart */}
+      <path
+        d="M120 46 C112 40 101 33 101 23 C101 16.5 106 12 111.5 12 C115.5 12 118.6 14.4 120 17.6 C121.4 14.4 124.5 12 128.5 12 C134 12 139 16.5 139 23 C139 33 128 40 120 46Z"
+        fill={`url(#${id}h)`}
+        stroke="#8c6428"
+        strokeWidth=".6"
+      />
+      <path d="M108 20 C109 16.5 112 15 114.5 15.4" fill="none" stroke="#fff6dc" strokeWidth="1.3" strokeLinecap="round" opacity=".85" />
+      <path d="M120 41 C114 36.5 107 31 106 24" fill="none" stroke="#fff3cf" strokeWidth=".6" opacity=".45" />
+    </svg>
+  );
+}
+
 /** Arched gold frame used for the couple's photos (the venue keeps its own rectangular frame). */
 function PhotoFrame({ src, alt, className = "", eager = false }: { src: string; alt: string; className?: string; eager?: boolean }) {
   const id = useId().replace(/:/g, "");
@@ -190,7 +234,7 @@ export default function Invitation({ w }: { w: Wedding }) {
                 <span className="signature-name">{w.signature.name}</span>
               </p>
             )}
-            <Icon name="heart" className="reveal heart" />
+            <ClosingHeart />
             <p className="rsvp-note reveal">Ju lutem konfirmoni pjesëmarrjen tuaj</p>
           </section>
         </div>
